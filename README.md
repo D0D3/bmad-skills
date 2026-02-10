@@ -1,4 +1,5 @@
 # BMAD Skills - Business Agile Development
+[Version en français](README-fr.md)
 
 Professional skills for Claude Code inspired by the BMAD methodology (Breakthrough Method for Agile AI-Driven Development).
 
