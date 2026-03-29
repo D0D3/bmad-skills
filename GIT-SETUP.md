@@ -7,30 +7,26 @@ bmad-skills/
 ├── .git/
 ├── .gitignore
 ├── README.md
+├── README-fr.md
 ├── LICENSE
+├── GIT-SETUP.md
 ├── Install-BMADSkills.ps1          # Script installation Windows
 ├── install-bmad-skills.sh          # Script installation Linux/Mac
-├── skills/
-│   ├── ba/
-│   │   └── SKILL.md
-│   ├── prd/
-│   │   └── SKILL.md
-│   ├── architecture/
-│   │   └── SKILL.md
-│   ├── stories/
-│   │   └── SKILL.md
-│   └── qa/
-│       └── SKILL.md
-├── examples/                       # Optionnel: Exemples d'usage
-│   ├── sample-business-case.md
-│   ├── sample-prd.md
-│   ├── sample-architecture.md
-│   ├── sample-epic.md
-│   └── sample-test-plan.md
-└── docs/                          # Optionnel: Documentation additionnelle
-    ├── quick-start.md
-    ├── workflows.md
-    └── customization.md
+└── skills/
+    ├── ba/
+    │   └── SKILL.md               # Business Analysis
+    ├── prd/
+    │   └── SKILL.md               # Product Requirements Document
+    ├── architecture/
+    │   └── SKILL.md               # Architecture technique (stack open-source)
+    ├── dba/
+    │   └── SKILL.md               # Database Administrator (PostgreSQL)
+    ├── uiux/
+    │   └── SKILL.md               # UI/UX Design (design system, accessibilité)
+    ├── stories/
+    │   └── SKILL.md               # Epics & User Stories (avec alignement doc)
+    └── qa/
+        └── SKILL.md               # QA & Testing (agents autonomes, CI/CD)
 ```
 
 ---
@@ -48,22 +44,24 @@ cd bmad-skills
 git init
 
 # Créer la structure
-mkdir -p skills/{ba,prd,architecture,stories,qa}
-mkdir -p examples docs
+mkdir -p skills/{ba,prd,architecture,dba,uiux,stories,qa}
 ```
 
 ### 2. Copier les fichiers
 
-Copier les 5 fichiers SKILL.md que je t'ai créés:
-- `ba-SKILL.md` → `skills/ba/SKILL.md`
-- `prd-SKILL.md` → `skills/prd/SKILL.md`
-- `architecture-SKILL.md` → `skills/architecture/SKILL.md`
-- `stories-SKILL.md` → `skills/stories/SKILL.md`
-- `qa-SKILL.md` → `skills/qa/SKILL.md`
+Copier les 7 fichiers SKILL.md :
+- `skills/ba/SKILL.md`           → Business Analysis
+- `skills/prd/SKILL.md`          → Product Requirements Document
+- `skills/architecture/SKILL.md` → Architecture technique (stack open-source)
+- `skills/dba/SKILL.md`          → Database Administrator (PostgreSQL)
+- `skills/uiux/SKILL.md`         → UI/UX Design (design system, accessibilité)
+- `skills/stories/SKILL.md`      → Epics & User Stories
+- `skills/qa/SKILL.md`           → QA & Testing (agents autonomes, CI/CD)
 
-Copier aussi:
-- `README.md` → racine
-- `Install-BMADSkills.ps1` → racine
+Copier aussi à la racine :
+- `README.md` et `README-fr.md`
+- `Install-BMADSkills.ps1` et `install-bmad-skills.sh`
+- `LICENSE`, `GIT-SETUP.md`, `.gitignore`
 
 ### 3. Premier commit
 
@@ -72,15 +70,17 @@ Copier aussi:
 git add .
 
 # Premier commit
-git commit -m "Initial commit: BMAD Skills v1.0.0
+git commit -m "Initial commit: BMAD Skills v2.0.0
 
 - BA skill (Business Analysis multi-casquette)
 - PRD skill (Product Requirements Document)
-- Architecture skill (ADRs, diagrammes, sécurité)
-- Stories skill (Epics, User Stories, Sprint Planning)
-- QA skill (Test Plans, UAT, Déploiement)
-- Installation scripts (PowerShell)
-- Documentation complète"
+- Architecture skill (stack open-source, ADRs, sécurité OWASP)
+- DBA skill (PostgreSQL, migrations Alembic, backup, sécurité DB)
+- UI/UX skill (design system, accessibilité WCAG 2.1, Storybook)
+- Stories skill (Epics, User Stories, alignement documentation)
+- QA skill (agents autonomes, CI/CD, rapports, tests E2E)
+- Stack 100% open-source (FastAPI, PostgreSQL, Authentik, Docker)
+- Scripts installation Linux/Mac + Windows"
 ```
 
 ---
@@ -127,26 +127,29 @@ git push -u origin main
 
 ```bash
 # Tag local
-git tag -a v1.0.0 -m "Release v1.0.0: Initial BMAD Skills
+git tag -a v2.0.0 -m "Release v2.0.0: BMAD Skills open-source stack
 
-Skills inclus:
+Skills inclus (7 au total):
 - BA (Business Analysis)
-- PRD (Product Requirements)
-- Architecture
-- Stories (Epics & User Stories)
-- QA (Quality Assurance)
+- PRD (Product Requirements Document)
+- Architecture (stack open-source: FastAPI, PostgreSQL, Authentik, Docker)
+- DBA (PostgreSQL best practices, migrations, backup)
+- UI/UX (design system Tailwind/shadcn, WCAG 2.1, Storybook)
+- Stories (Epics & User Stories, alignement documentation IT + user)
+- QA (agents autonomes, CI/CD pipeline, rapports automatiques)
 
-Workflow complet BA → PRD → Architecture → Stories → QA"
+Breaking change: Suppression de toutes les références propriétaires
+(M-Files, SharePoint, VBScript, Azure AD, PowerApps)"
 
 # Push tag
-git push origin v1.0.0
+git push origin v2.0.0
 ```
 
 **Ou via GitHub CLI:**
 ```bash
-gh release create v1.0.0 \
-  --title "BMAD Skills v1.0.0" \
-  --notes "Initial release with 5 core skills: BA, PRD, Architecture, Stories, QA"
+gh release create v2.0.0 \
+  --title "BMAD Skills v2.0.0 - Open-Source Stack" \
+  --notes "7 skills, 100% open-source, self-hosted. New: DBA + UI/UX agents."
 ```
 
 ---
@@ -298,13 +301,13 @@ jobs:
       
       - name: Check required skills
         run: |
-          for skill in ba prd architecture stories qa; do
+          for skill in ba prd architecture dba uiux stories qa; do
             if [ ! -f "skills/$skill/SKILL.md" ]; then
-              echo "❌ Missing skill: $skill"
+              echo "Missing skill: $skill"
               exit 1
             fi
           done
-          echo "✅ All skills present"
+          echo "All 7 skills present"
       
       - name: Validate markdown
         uses: DavidAnson/markdownlint-action@v1

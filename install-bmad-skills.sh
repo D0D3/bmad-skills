@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 # Configuration
 SOURCE_PATH="${1:-./skills}"
 CLAUDE_SKILLS_PATH="$HOME/.claude/skills"
-REQUIRED_SKILLS=("ba" "prd" "architecture" "stories" "qa")
+REQUIRED_SKILLS=("ba" "prd" "architecture" "stories" "qa" "dba" "uiux")
 
 # Fonction: Print avec couleur
 print_color() {
@@ -140,7 +140,16 @@ print_color "$YELLOW" "\n📖 Prochaines étapes:"
 print_color "$WHITE" "   1. Redémarrez Claude Code (si déjà ouvert)"
 print_color "$WHITE" "   2. Lancez Claude Code dans votre projet"
 print_color "$WHITE" "   3. Tapez 'skills' pour vérifier les skills chargés"
-print_color "$WHITE" "   4. Utilisez: 'utilise le skill ba' ou '/ba'"
+print_color "$WHITE" "   4. Utilisez un skill: '/ba', '/prd', '/architecture', '/dba', '/uiux', '/stories', '/qa'"
+
+print_color "$CYAN" "\n💡 Skills disponibles:"
+print_color "$GRAY" "   /ba           → Business Analysis"
+print_color "$GRAY" "   /prd          → Product Requirements Document"
+print_color "$GRAY" "   /architecture → Architecture technique (open-source stack)"
+print_color "$GRAY" "   /dba          → Database Administrator (PostgreSQL)"
+print_color "$GRAY" "   /uiux         → UI/UX Design (design system, accessibilité)"
+print_color "$GRAY" "   /stories      → Epics & User Stories"
+print_color "$GRAY" "   /qa           → QA & Testing (agents autonomes, CI/CD)"
 
 print_color "$CYAN" "\n💡 Besoin d'aide ?"
 print_color "$WHITE" "   README.md : Guide complet d'utilisation"

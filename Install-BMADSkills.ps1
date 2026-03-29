@@ -33,7 +33,7 @@ param(
 
 # Configuration
 $ClaudeSkillsPath = Join-Path $env:USERPROFILE ".claude\skills"
-$RequiredSkills = @('ba', 'prd', 'architecture', 'stories', 'qa')
+$RequiredSkills = @('ba', 'prd', 'architecture', 'stories', 'qa', 'dba', 'uiux')
 
 # Fonction: Write-ColorOutput
 function Write-ColorOutput {
@@ -171,7 +171,16 @@ Write-ColorOutput "`n📖 Prochaines étapes:" Yellow
 Write-ColorOutput "   1. Redémarrez Claude Code (si déjà ouvert)" White
 Write-ColorOutput "   2. Lancez Claude Code dans votre projet" White
 Write-ColorOutput "   3. Tapez 'skills' pour vérifier les skills chargés" White
-Write-ColorOutput "   4. Utilisez: 'utilise le skill ba' ou '/ba'" White
+Write-ColorOutput "   4. Utilisez un skill: '/ba', '/prd', '/architecture', '/dba', '/uiux', '/stories', '/qa'" White
+
+Write-ColorOutput "`n💡 Skills disponibles:" Cyan
+Write-ColorOutput "   /ba           -> Business Analysis" Gray
+Write-ColorOutput "   /prd          -> Product Requirements Document" Gray
+Write-ColorOutput "   /architecture -> Architecture technique (open-source stack)" Gray
+Write-ColorOutput "   /dba          -> Database Administrator (PostgreSQL)" Gray
+Write-ColorOutput "   /uiux         -> UI/UX Design (design system, accessibilite)" Gray
+Write-ColorOutput "   /stories      -> Epics & User Stories" Gray
+Write-ColorOutput "   /qa           -> QA & Testing (agents autonomes, CI/CD)" Gray
 
 Write-ColorOutput "`n💡 Besoin d'aide ?" Cyan
 Write-ColorOutput "   README.md : Guide complet d'utilisation" White

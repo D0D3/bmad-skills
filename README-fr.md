@@ -1,433 +1,136 @@
-# BMAD Skills - Business Agile Development
-[Version en anglais](README.md)
+# BMAD Skills pour Claude Code
 
-Skills professionnels pour Claude Code inspirés de la méthodologie BMAD (Breakthrough Method for Agile AI-Driven Development).
+Bibliothèque de skills professionnels pour Claude Code implémentant la méthodologie **BMAD (Breakthrough Method for Agile AI-Driven Development)**.
 
-## 📚 Skills Disponibles
+Cette version se concentre sur des **technologies open-source, auto-hébergées, sans dépendance à des logiciels propriétaires**.
 
-### 1. BA - Business Analysis
-**Fichier:** `ba/SKILL.md`
+## Skills Disponibles
 
-Analyse métier multi-casquette avec 3 niveaux adaptables :
-- **Quick Flow** (<5min): Problem statement, Go/No-Go
-- **BMad Method** (<15min): Brainstorming, Business Case, Process Mapping
-- **Enterprise** (<30min): Feasibility Study, Change Management
+| Skill | Commande | Description |
+|-------|----------|-------------|
+| Business Analysis | `/ba` | Discovery, brainstorming, business case, feasibility |
+| Product Requirements | `/prd` | PRD, user stories, personas, success metrics |
+| Architecture | `/architecture` | Conception technique, stack open-source, ADRs, sécurité |
+| Database Admin | `/dba` | Meilleures pratiques PostgreSQL, schéma, migrations, backup |
+| UI/UX Design | `/uiux` | Design system, accessibilité (WCAG 2.1), composants, doc user |
+| Epics & Stories | `/stories` | Décomposition stories, sprint planning, alignement documentation |
+| Quality Assurance | `/qa` | Stratégie tests, agents autonomes QA, CI/CD, rapports |
 
-**Techniques:**
-- Role Playing (3 personas)
-- Five Whys (root cause)
-- Analogical Thinking
-- Interviews, Workshops, Surveys
+## Stack Technologique
 
-**Livrables:**
-- Brainstorming Session Results
-- Business Case (ROI)
-- Process Maps BPMN (AS-IS/TO-BE)
-- Feasibility Study
-- Change Management Plan
+Tous les skills sont conçus autour d'un **stack moderne, open-source et auto-hébergé** :
 
----
+**Frontend :** React 18 + TypeScript + Tailwind CSS + shadcn/ui + Vite + Storybook
 
-### 2. PRD - Product Requirements Document
-**Fichier:** `prd/SKILL.md`
+**Backend :** FastAPI (Python 3.11+) + PostgreSQL 16 + Redis + Celery
 
-Création de documents d'exigences produit structurés.
+**Auth :** Authentik (SSO/OIDC/2FA auto-hébergé)
 
-**Contenu:**
-- Vision & Objectifs
-- Personas & Utilisateurs
-- User Stories (format INVEST)
-- Exigences fonctionnelles/techniques
-- Contraintes & Risques
-- Success Metrics
+**Infrastructure :** Docker + Docker Compose + Traefik v3 (SSL auto Let's Encrypt)
 
-**Templates:**
-- PRD Quick (3 pages)
-- PRD Complet (5-8 pages)
-- Design Sprint validation
+**Tests :** Pytest + Testcontainers + Playwright + k6
 
----
+**Monitoring :** Prometheus + Grafana + Loki + Uptime Kuma
 
-### 3. Architecture
-**Fichier:** `architecture/SKILL.md`
+**Documentation :** MkDocs Material (IT) + Storybook (composants) + OpenAPI (API auto-générée)
 
-Conception technique et décisions architecturales.
+## Workflow BMAD
 
-**Inclut:**
-- ADR (Architecture Decision Records)
-- Diagrammes C4 Model
-- Sécurité & Compliance
-- Scalabilité & Performance
-- Plan de déploiement
-- Monitoring & Logging
-
-**Outils:**
-- BPMN pour workflows
-- Diagrammes système
-- Tech stack documentation
-
----
-
-### 4. Stories - Epics & User Stories
-**Fichier:** `stories/SKILL.md`
-
-Décomposition agile en Epics et User Stories.
-
-**Format:**
-- User Stories INVEST
-- Acceptance Criteria
-- Definition of Done
-- Story Points (Fibonacci)
-- MoSCoW Prioritization
-
-**Gestion:**
-- Sprint Planning
-- Backlog Refinement
-- Epic Decomposition
-- Velocity Tracking
-
----
-
-### 5. QA - Quality Assurance
-**Fichier:** `qa/SKILL.md`
-
-Stratégies de test et validation qualité.
-
-**Pyramide de tests:**
-- Unit Tests (50%)
-- Functional Tests (30%)
-- Integration Tests (15%)
-- UAT (5%)
-
-**Inclut:**
-- Test Plans
-- Test Cases
-- Bug Tracking
-- Regression Testing
-- Performance Testing
-- Déploiement phased (pilote → production)
-
----
-
-## 🚀 Installation
-
-### Option 1: Installation Locale (Claude Code)
-
-1. **Cloner le repo:**
-```bash
-git clone https://github.com/D0D3/bmad-skills.git
-cd bmad-skills
+```
+1. /ba          → Discovery, business case, feasibility
+        ↓
+2. /prd         → Exigences, user stories, personas
+   ↓       ↓
+  /dba    /uiux  ← Consulter tôt (schéma DB, design system)
+        ↓
+3. /architecture → ADRs, conception système, sécurité
+        ↓
+4. /stories      → Epics, sprint planning, alignement doc
+        ↓
+5. /qa           → Stratégie tests, CI/CD, UAT, rapports
 ```
 
-2. **Copier dans Claude Code:**
-```bash
-# Windows
-xcopy /E /I skills "%USERPROFILE%\.claude\skills"
+## Niveaux de Complexité
 
-# Linux/Mac
+- **Quick Flow** (<5 min) : Bug fix, scope clair, petite feature
+- **BMad Method** (<15 min) : Nouveau produit, scope modéré
+- **Enterprise** (<30 min) : Multi-stakeholders, conformité, haute criticité
+
+## Installation
+
+### Option 1 : Script automatique
+
+**Linux/macOS :**
+```bash
+chmod +x install-bmad-skills.sh
+./install-bmad-skills.sh
+```
+
+**Windows :**
+```powershell
+.\Install-BMADSkills.ps1
+```
+
+### Option 2 : Git Submodule (par projet)
+```bash
+git submodule add https://github.com/YOUR_ORG/bmad-skills.git .claude/skills
+```
+
+### Option 3 : Copie manuelle
+```bash
 cp -r skills/* ~/.claude/skills/
 ```
 
-3. **Vérifier l'installation:**
-```bash
-# Dans Claude Code
-skills
-```
+## Collaboration entre Agents
 
-Vous devriez voir :
-- ba
-- prd
-- architecture
-- stories
-- qa
-
----
-
-### Option 2: Installation Git Submodule (Projet Spécifique)
-
-Si vous voulez utiliser ces skills dans un projet spécifique :
-
-```bash
-cd votre-projet
-
-# Ajouter comme submodule
-git submodule add https://github.com/D0D3/bmad-skills.git .claude/skills
-
-# Initialiser
-git submodule update --init --recursive
-```
-
-**Update skills:**
-```bash
-cd votre-projet
-git submodule update --remote --merge
-```
-
----
-
-### Option 3: Installation Directe (sans Git)
-
-1. **Télécharger le ZIP:**
-   - GitHub → Code → Download ZIP
-   - Extraire
-
-2. **Copier manuellement:**
-```
-%USERPROFILE%\.claude\skills\
-├── ba\
-│   └── SKILL.md
-├── prd\
-│   └── SKILL.md
-├── architecture\
-│   └── SKILL.md
-├── stories\
-│   └── SKILL.md
-└── qa\
-    └── SKILL.md
-```
-
-3. **Redémarrer Claude Code**
-
----
-
-## 📖 Utilisation
-
-### Appel Direct (si supporté)
-```bash
-/ba
-/prd
-/architecture
-/stories
-/qa
-```
-
-### Langage Naturel (recommandé)
-```
-"utilise le skill BA pour analyser cette opportunité"
-"crée un PRD avec le skill prd"
-"applique le skill architecture pour documenter les décisions"
-"décompose en stories selon le skill stories"
-"crée un test plan avec le skill qa"
-```
-
-### Détection Automatique
-Claude détecte automatiquement le skill pertinent selon votre demande :
-```
-"je veux créer un business case pour [projet]"
-→ Claude charge automatiquement le skill BA
-
-"quels sont les user stories pour cette feature ?"
-→ Claude charge automatiquement le skill stories
-```
-
----
-
-## 🔄 Workflow Complet BMAD
+Les agents peuvent s'interroger mutuellement :
 
 ```
-1. BA (Business Analysis)
-   ↓
-   → Brainstorming Session
-   → Business Case (ROI)
-   → Process Mapping (si workflow)
-   → Feasibility Study (si Enterprise)
-   ↓
-2. PRD (Product Requirements)
-   ↓
-   → Vision & Objectifs
-   → User Stories high-level
-   → Success Metrics
-   ↓
-3. Architecture
-   ↓
-   → ADR (décisions techniques)
-   → Diagrammes système
-   → Sécurité & Déploiement
-   ↓
-4. Stories (Epics & User Stories)
-   ↓
-   → Décomposition en stories
-   → Estimation (Story Points)
-   → Sprint Planning
-   ↓
-5. QA (Quality Assurance)
-   ↓
-   → Test Plan
-   → Test Cases
-   → UAT
-   → Déploiement
+/architecture → "Consulter /dba pour conventions schéma"
+/prd          → "Consulter /uiux pour exigences interface"
+/stories      → "Consulter /dba si schéma DB modifié"
+/qa           → "Consulter /dba pour optimisation requêtes lentes"
 ```
 
----
+### Exemple de flux d'interrogation
 
-## 🎯 Tracks de Planification
+```
+PRD demande au DBA :
+"Cette fonctionnalité génère des notifications. Quelle table recommandes-tu ?"
 
-### Quick Flow
-**Durée:** <5min  
-**Pour:** Bug fix, petite feature, scope clair
+DBA répond :
+"Utiliser une table 'notifications' avec UUID, user_id FK, type TEXT, read_at TIMESTAMPTZ.
+Index sur (user_id, created_at DESC) WHERE read_at IS NULL."
 
-**Skills utilisés:**
-- BA (Quick Analysis uniquement)
-- PRD (optionnel, version courte)
-- Stories (1-2 stories max)
-
----
-
-### BMad Method
-**Durée:** <15min  
-**Pour:** Nouveau produit, plateforme, scope modéré
-
-**Skills utilisés:**
-- BA (Brainstorming + Business Case)
-- PRD (complet)
-- Architecture (ADRs essentiels)
-- Stories (Epics + Stories décomposés)
-- QA (Test Plan standard)
-
----
-
-### Enterprise
-**Durée:** <30min  
-**Pour:** Conformité, scalabilité, multi-stakeholders
-
-**Skills utilisés:**
-- BA (Feasibility + Change Management)
-- PRD (complet + compliance)
-- Architecture (complet + monitoring)
-- Stories (Epics + Stories + Spikes)
-- QA (Test Plan complet + Performance)
-
----
-
-## 🛠️ Personnalisation
-
-### Adapter à Votre Contexte
-
-Chaque skill contient des exemples génériques. Vous pouvez :
-
-1. **Les utiliser tels quels** - Skills fonctionnent de manière générique
-2. **Les personnaliser** - Ajouter vos propres exemples d'entreprise
-3. **Les enrichir** - Ajouter vos cas d'usage spécifiques
-
-**Exemple de personnalisation:**
-
-```markdown
-# Dans prd/SKILL.md
-
-## Exemples [VOTRE-ENTREPRISE]
-
-### Exemple 1: [Votre projet]
-**Vision:** [Description]
-**Success Metric:** [KPI]
-**Must Have:** [Features]
+Architecture utilise la réponse DBA pour ADR-005.
 ```
 
----
+## Philosophie Documentation
 
-## 📝 Templates Disponibles
+Chaque user story livrée doit inclure :
+- **Documentation technique IT** : Docs API (Swagger auto), ADRs, runbooks (MkDocs Material)
+- **Documentation utilisateur** : Guides avec captures annotées, cas d'utilisation, FAQ
 
-Chaque skill inclut des templates prêts à l'emploi :
+## Agent QA Autonome
 
-### BA Templates
-- Quick Analysis (1 paragraphe)
-- Brainstorming Session Results
-- Business Case (ROI complet)
-- Process Map BPMN
-- Feasibility Study
-- Change Management Plan
+Le skill QA intègre un agent autonome capable de :
+1. Exécuter les suites de tests (CI/CD automatisé)
+2. Générer un rapport structuré (résultats, couverture, performance)
+3. Identifier les axes d'amélioration (tests manquants, régressions perf)
+4. Proposer des actions prioritaires pour le prochain sprint
+5. Bloquer le déploiement si critères non atteints
 
-### PRD Templates
-- PRD Quick (3 pages)
-- PRD Complet (5-8 pages)
-- User Story format
+**Objectif : couverture fonctionnelle ≥90%**
 
-### Architecture Templates
-- ADR (Architecture Decision Record)
-- System Diagram
-- Deployment Plan
-- Tech Stack Documentation
+## Principes Fondamentaux
 
-### Stories Templates
-- Epic Template
-- User Story Template
-- Sprint Planning Template
-- Backlog Structure
+1. **Open-Source First :** Aucune dépendance à des logiciels propriétaires
+2. **Auto-hébergé :** Contrôle total, pas de vendor lock-in, GDPR-friendly
+3. **Docker First :** Tout service = container, déploiement reproductible
+4. **Documentation synchronisée :** Doc livrée avec le code, jamais après
+5. **Tests automatisés :** Pipeline CI/CD bloquant, pas optionnel
+6. **Security by Design :** OWASP Top 10, 2FA, secrets management dès le départ
 
-### QA Templates
-- Test Plan
-- Test Case
-- Bug Report
-- UAT Script
-- Regression Suite
+## Licence
 
----
-
-## 🔧 Maintenance
-
-### Mise à Jour des Skills
-
-**Si installation locale:**
-```bash
-cd bmad-skills
-git pull origin main
-xcopy /E /I /Y skills "%USERPROFILE%\.claude\skills"
-```
-
-**Si submodule:**
-```bash
-cd votre-projet
-git submodule update --remote --merge
-```
-
----
-
-## 🤝 Contribution
-
-Les contributions sont bienvenues !
-
-1. **Fork** le repo
-2. **Créer une branche** (`git checkout -b feature/amelioration-ba`)
-3. **Commit** (`git commit -m 'Ajout template X au skill BA'`)
-4. **Push** (`git push origin feature/amelioration-ba`)
-5. **Pull Request**
-
-**Guidelines:**
-- Templates doivent rester génériques (pas de données confidentielles)
-- Exemples anonymisés si basés sur cas réels
-- Markdown formaté correctement
-- Tester avec Claude Code avant PR
-
----
-
-## 📄 License
-
-MIT License - voir [LICENSE](LICENSE) pour les détails.
-
----
-
-## 🙏 Remerciements
-
-Inspiré par [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD) - Breakthrough Method for Agile AI-Driven Development.
-
----
-
-## 📞 Support
-
-- **Issues:** [GitHub Issues](https://github.com/D0D3/bmad-skills/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/D0D3/bmad-skills/discussions)
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Skill Deployment (CD/CI pipelines)
-- [ ] Skill Monitoring (métriques projet)
-- [ ] Skill Retrospective (lessons learned)
-- [ ] Templates visuels (Mermaid diagrams)
-- [ ] Intégrations (Jira, Azure DevOps, etc.)
-- [ ] Skill Creator (méta-skill pour créer skills)
-
----
-
-**Version:** 1.0.0  
-**Dernière mise à jour:** 2026-02-10
+MIT License — Voir fichier LICENSE.
